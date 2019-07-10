@@ -22,10 +22,14 @@ allprojects {
    implementation project(':retrofitlibrary')
 4.基本用法
  在Application中onCreate()方法里进行注册：
+  必须：
   RetrofitHLibrary.init(this, BaseUrl);
-  RetrofitHLibrary.getHttpConfigure().setNotTipDialog(true);　// 网络请求基础配置类,是否显示日志、超时时长　等（可选）
-onTerminate()方法里进行注销：
- RetrofitHLibrary.onDestory();
+  配置（可选）：
+  RetrofitHLibrary.getmHttpConfigure().setTipDialog(true);　// 设置请求错误时 显示dialog（默认关闭）
+  RetrofitHLibrary.getmHttpConfigure().showLog(true);// 设置打印日志 显示dialog（默认关闭）
+  RetrofitHLibrary.getmHttpConfigure().setTimeOut(long);// 设置超时时长（默认60s）
+  onTerminate()方法里进行注销：
+  RetrofitHLibrary.onDestory();
 5.
   RetrofitLibrary.getRetrofitHttp()
        .post()　//请求方式
@@ -47,7 +51,7 @@ onTerminate()方法里进行注销：
                 
             });
             
-实体类: 继承BaseResponseModel<Ｔ>或BaseResponseListModel<T>
+实体类: 继承BaseResponseModel<Ｔ>
 6.RetrofitHLibrary.getRetrofitHttp()
        .post()　//请求方式
        .apiUrl(url地址)
